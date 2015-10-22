@@ -8,11 +8,17 @@
       <div class="container">
         
         <!-- Form goes here -->
-
+        <%= form_for(@new_post) do |post| %>
+			 <div class="field"> 
+         <%= post.text_field :comment, :placeholder => "share your thoughts" %>
+        </div>
+        <%= post.submit "Post", class: "btn" %>
+        <% end %>
         
         <ul class="comments">
-          <li>Have you felt it?</li>
-          <li>There has been an awakening.</li>
+          <% @all_posts.each do |p| %>
+          <li><%= p.comment %></li>
+          <% end %>
         </ul>
 
       </div>
